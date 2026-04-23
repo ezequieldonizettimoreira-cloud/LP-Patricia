@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Patrícia Helena Moreira · Síndica Profissional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --gold:#C5A162;--gold-l:#D4B47A;--gold-p:#F0E6D0;
+      --navy:#1A2540;--ow:#F8F9FA;--w:#fff;
+      --txt:#2D3436;--txt2:#636E72;--bd:#E8E8E8;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--txt);background:var(--ow);overflow-x:hidden}
+
+    /* HEADER */
+    header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .4s,box-shadow .4s,transform .35s cubic-bezier(.4,0,.2,1)}
+    header.scrolled{border-color:var(--bd);box-shadow:0 2px 30px rgba(0,0,0,.07)}
+    header.hidden{transform:translateY(-100%)}
+    .hc{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:80px;padding:0 40px}
+
+    /* LOGO TEXTO */
+    .logo{text-decoration:none;display:flex;flex-direction:column;line-height:1;gap:2px}
+    .logo-name{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+    .logo-name span{color:var(--gold)}
+    .logo-tagline{font-size:.52rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--txt2)}
+    .logo-bar{width:100%;height:1.5px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:2px}
+
+    nav ul{list-style:none;display:flex;align-items:center;gap:32px}
+    nav a{text-decoration:none;color:var(--txt);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;position:relative;transition:color .3s}
+    nav a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+    nav a:not(.bp):hover{color:var(--gold)}
+    nav a:not(.bp):hover::after{transform:scaleX(1)}
+    .bp{border:1.5px solid var(--gold)!important;padding:9px 22px!important;border-radius:3px;color:var(--gold)!important;transition:all .3s!important}
+    .bp:hover{background:var(--gold)!important;color:var(--w)!important}
+    .bp::after{display:none!important}
+
+    /* HERO */
+    .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden}
+    .hbg{position:absolute;inset:0;background:linear-gradient(135deg,#1a2540,#243050 40%,#2a4a6a)}
+    .hbg img{width:100%;height:100%;object-fit:cover;opacity:.25}
+    .hov{position:absolute;inset:0;background:linear-gradient(105deg,rgba(15,22,40,.92),rgba(15,22,40,.76) 45%,rgba(15,22,40,.28))}
+    .hcon{position:relative;z-index:2;padding:140px 40px 80px;max-width:1240px;margin:0 auto;width:100%}
+    .hbadge{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px;opacity:0;animation:fup .7s .3s forwards}
+    .hbl{width:32px;height:1px;background:var(--gold)}
+    .hbadge span{font-size:.68rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+    h1.ht{font-family:'Montserrat',sans-serif;font-size:clamp(1.7rem,7.5vw,5.2rem);font-weight:800;line-height:1.1;color:var(--w);text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fup .7s .5s forwards}
+    h1.ht .ac{color:var(--gold)}
+    .hsub{font-size:clamp(.9rem,1.4vw,1.05rem);font-weight:300;line-height:1.7;color:rgba(255,255,255,.72);max-width:480px;margin-bottom:48px;opacity:0;animation:fup .7s .65s forwards}
+    .hact{display:flex;align-items:center;gap:24px;opacity:0;animation:fup .7s .8s forwards}
+    .btnH{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--w);font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:16px 36px;border-radius:3px;transition:all .3s;border:none;cursor:pointer}
+    .btnH:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 8px 28px rgba(197,161,98,.4)}
+    .hsc{font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none;transition:color .3s;display:flex;align-items:center;gap:10px}
+    .hsc:hover{color:var(--gold)}
+    .scl{width:24px;height:1px;background:currentColor}
+    /* NÚMEROS */
+    .nums{background:var(--navy);padding:0}
+    .nums-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+    .num-item{padding:40px 32px;border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;position:relative}
+    .num-item:last-child{border-right:none}
+    .num-item::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:32px;height:2px;background:var(--gold)}
+    .num-val{font-family:'Montserrat',sans-serif;font-size:2.4rem;font-weight:800;color:var(--gold);line-height:1}
+    .num-lbl{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);line-height:1.5}
+
+    /* SOBRE */
+    .sobre{background:var(--w);padding:100px 40px}
+    .gc{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:80px;align-items:center}
+    .fw{display:flex;flex-direction:column;align-items:center;gap:20px}
+    .fc{width:240px;height:240px;border-radius:50%;overflow:hidden;border:3px solid var(--gold);box-shadow:0 0 0 8px var(--gold-p),0 16px 48px rgba(197,161,98,.2);background:linear-gradient(160deg,#e8ecf2,#c8d4e8);position:relative;flex-shrink:0}
+    .fc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+    .fcred{font-size:.65rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:7px 20px;border:1px solid var(--gold-p);background:var(--ow)}
+    .sl2{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+    .sll{width:32px;height:1.5px;background:var(--gold)}
+    .sl2 span{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+    h2.st{font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,2.5vw,2.5rem);font-weight:800;text-transform:uppercase;color:var(--navy);line-height:1.1;margin-bottom:24px}
+    h2.st .it{font-style:italic;font-weight:600;color:var(--gold);text-transform:none}
+    .sp{font-size:.95rem;font-weight:300;line-height:1.85;color:var(--txt2);margin-bottom:14px}
+    .bgs{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+    .bg{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);padding:7px 16px;border:1px solid var(--bd);border-radius:2px;background:var(--ow)}
+
+    /* SERVIÇOS */
+    .servicos{background:var(--ow);padding:100px 40px}
+    .sc2{max-width:1240px;margin:0 auto}
+    .sh{text-align:center;margin-bottom:64px}
+    .sh .sl2{justify-content:center}
+    .grd{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .card{background:var(--w);border:1px solid var(--bd);padding:52px 36px;text-align:center;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .3s;cursor:default}
+    .card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:center;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+    .card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.08);border-color:var(--gold-p)}
+    .card:hover::after{transform:scaleX(1)}
+    .ciw{width:96px;height:96px;margin:0 auto 28px;background:var(--gold-p);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s}
+    .card:hover .ciw{background:var(--navy)}
+    .cn{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+    h3.ct{font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:14px}
+    .cd{font-size:.85rem;font-weight:300;line-height:1.75;color:var(--txt2)}
+
+    /* DIFERENCIAL */
+    .dif{position:relative;overflow:hidden;min-height:500px;display:flex;align-items:center}
+    .dbg{position:absolute;inset:0;background:var(--navy)}
+    .dbg img{width:100%;height:100%;object-fit:cover;opacity:.2}
+    .dov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,37,64,.97) 35%,rgba(26,37,64,.6))}
+    .dc{position:relative;z-index:2;padding:100px 40px;max-width:680px}
+    .dc .sl2 span{color:var(--gold)}
+    .dc h2.st{color:var(--w)}
+    .dc h2.st .it{color:var(--gold)}
+    .dt{font-size:.95rem;font-weight:300;line-height:1.85;color:rgba(255,255,255,.65);margin-bottom:40px}
+    .di{display:flex;flex-direction:column;gap:16px}
+    .ditem{display:flex;align-items:flex-start;gap:14px;font-size:.88rem;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6}
+    .dd{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+
+    /* CONTATO */
+    .contato{background:var(--w);padding:100px 40px}
+    .cc{max-width:1240px;margin:0 auto}
+    .fcard{background:var(--ow);border:1px solid var(--bd);padding:64px 72px;max-width:860px;margin:0 auto}
+    .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px}
+    .fg{display:flex;flex-direction:column;gap:8px}
+    .fg.full{grid-column:1/-1}
+    label.fl{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--txt2)}
+    input.fi,textarea.fi{width:100%;background:var(--w);border:1px solid var(--bd);border-radius:2px;padding:13px 16px;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:300;color:var(--txt);outline:none;transition:border-color .3s,box-shadow .3s}
+    input.fi::placeholder,textarea.fi::placeholder{color:#b2bec3}
+    input.fi:focus,textarea.fi:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(197,161,98,.12)}
+    textarea.fi{resize:none;min-height:100px}
+    .benv{width:100%;margin-top:8px;background:var(--gold);color:var(--w);border:none;border-radius:3px;padding:18px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+    .benv:hover{background:var(--gold-l);box-shadow:0 8px 28px rgba(197,161,98,.35);transform:translateY(-1px)}
+    .fnote{font-size:.68rem;color:var(--txt2);text-align:center;margin-top:16px}
+    .wbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:12px;background:#25D366;color:#fff;border:none;border-radius:3px;padding:15px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:all .3s}
+    .wbtn:hover{background:#1ebe5d;transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,211,102,.35)}
+    .wbtn svg{flex-shrink:0}
+    .fdiv{display:flex;align-items:center;gap:16px;margin:20px 0 4px;color:var(--txt2);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+    .fdiv::before,.fdiv::after{content:'';flex:1;height:1px;background:var(--bd)}
+    .fsuc{display:none;text-align:center;padding:40px 0}
+    .fsuc.show{display:block}
+    .fsi{width:64px;height:64px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.5rem;color:var(--gold)}
+    .fst{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:700;color:var(--navy);text-transform:uppercase;margin-bottom:10px}
+    .fsp{font-size:.9rem;color:var(--txt2);line-height:1.7}
+
+    /* FOOTER */
+    footer{background:var(--navy);padding:36px 40px}
+    .fi2{max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    /* Logo versão footer (invertida) */
+    .logo-ft .logo-name{color:#fff}
+    .logo-ft .logo-tagline{color:rgba(255,255,255,.4)}
+    .logo-ft .logo-bar{background:linear-gradient(90deg,var(--gold),transparent)}
+    .fcopy{font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.06em}
+
+    /* REVEAL */
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+    .rv.on{opacity:1;transform:none}
+    .d1{transition-delay:.12s}.d2{transition-delay:.22s}.d3{transition-delay:.32s}.d4{transition-delay:.42s}
+
+    @keyframes fup{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+    @keyframes fin{from{opacity:0}to{opacity:1}}
+
+    @media(max-width:900px){
+      .hc{padding:0 16px;height:60px}
+      /* CTA mobile: compacto, sem borda dupla */
+      .bp{padding:8px 14px!important;font-size:.62rem!important;letter-spacing:.1em!important;white-space:nowrap}
+      /* Oculta links do meio no mobile, mantém só CTA */
+      nav ul li:not(:last-child){display:none}
+      .hcon{padding:100px 20px 60px}
+      h1.ht{font-size:clamp(1.55rem,8vw,2.6rem)}
+      .nums-inner{grid-template-columns:1fr 1fr 1fr}
+      .num-item{padding:28px 12px}
+      .num-val{font-size:1.6rem}
+      .num-lbl{font-size:.55rem;letter-spacing:.1em}
+      .sobre,.servicos,.contato{padding:80px 20px}
+      .gc{grid-template-columns:1fr;gap:40px;justify-items:center;text-align:center}
+      .sl2{justify-content:center}
+      .bgs{justify-content:center}
+      .grd{grid-template-columns:1fr}
+      .dc{padding:80px 20px}
+      .fcard{padding:36px 20px}
+      .fgrid{grid-template-columns:1fr}
+      footer{padding:28px 20px}
+      .fi2{flex-direction:column;gap:14px;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+<header id="H">
+  <div class="hc">
+    <a href="#" class="logo">
+      <div class="logo-bar"></div>
+      <div class="logo-name">Patrícia <span>Helena</span></div>
+      <div class="logo-tagline">Síndica Profissional</div>
+    </a>
+    <nav><ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#contato" class="bp">Solicitar Proposta</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<section id="inicio" class="hero">
+  <div class="hbg"><img src="assets/predio.png" alt="" onerror="this.style.display='none'"/></div>
+  <div class="hov"></div>
+  <div class="hcon">
+    <div class="hbadge"><div class="hbl"></div><span>Gestão Condominial Premium</span></div>
+    <h1 class="ht">GESTÃO<br>CONDOMINIAL COM <br><span class="ac">RESPONSABILIDADE</span></h1>
+    <p class="hsub">Gestão clara, organizada e focada<br>no bom funcionamento do seu condomínio.</p>
+    <div class="hact">
+      <a href="#contato" class="btnH">Falar com Especialista
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#sobre" class="hsc"><span class="scl"></span>Conhecer mais</a>
+    </div>
+  </div>
+</section>
+
+<section class="nums rv">
+  <div class="nums-inner">
+    <div class="num-item"><div class="num-val">2+</div><div class="num-lbl">Anos de<br>experiência</div></div>
+    <div class="num-item"><div class="num-val">1°</div><div class="num-lbl">Condomínio<br>em gestão</div></div>
+    <div class="num-item"><div class="num-val">98%</div><div class="num-lbl">Índice de<br>satisfação</div></div>
+  </div>
+</section>
+
+<section id="sobre" class="sobre">
+  <div class="gc">
+    <div class="fw rv">
+      <div class="fc">
+        <img src="assets/foto-patricia.png" alt="Patrícia Helena"/>
+      </div>
+      <div class="fcred">Síndica Certificada</div>
+    </div>
+    <div>
+      <div class="sl2 rv"><div class="sll"></div><span>A Especialista</span></div>
+      <h2 class="st rv d1">PATRÍCIA<br>HELENA <span class="it">Moreira</span></h2>
+      <p class="sp rv d2">Olá, sou Patrícia Helena Moreira, Síndica Profissional em início de atuação prática, comprometida com uma gestão responsável, transparente e próxima dos condôminos.</p>
+      <p class="sp rv d3">Com 2 anos de experiência e atualmente à frente do meu primeiro condomínio, meu foco está em construir uma gestão organizada, com transparência nas contas, atenção à manutenção e comunicação clara com todos os envolvidos.</p>
+      <div class="bgs rv d4">
+        <span class="bg">Certificada ABRASSP</span>
+        <span class="bg">Gestão Financeira</span>
+        <span class="bg">Mediação de Conflitos</span>
+        <span class="bg">LGPD &amp; Compliance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos" class="servicos">
+  <div class="sc2">
+    <div class="sh">
+      <div class="sl2 rv"><div class="sll"></div><span>O que ofereço</span><div class="sll"></div></div>
+      <h2 class="st rv d1" style="margin-top:14px">NOSSOS PILARES</h2>
+    </div>
+    <div class="grd">
+
+      <!-- CARD 1: Gestão Financeira -->
+      <div class="card rv">
+        <div class="ciw">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="4" width="32" height="36" rx="3" stroke="var(--gold)" class="cstroke"/>
+            <rect x="11" y="9" width="22" height="8" rx="1.5" stroke="var(--gold)" class="cstroke"/>
+            <rect x="11" y="22" width="6" height="6" rx="1" stroke="var(--gold)" class="cstroke"/>
+            <rect x="21" y="22" width="6" height="6" rx="1" stroke="var(--gold)" class="cstroke"/>
+            <rect x="31" y="22" width="6" height="6" rx="1" stroke="var(--gold)" class="cstroke"/>
+            <rect x="11" y="32" width="6" height="6" rx="1" stroke="var(--gold)" class="cstroke"/>
+            <rect x="21" y="32" width="6" height="6" rx="1" stroke="var(--gold)" class="cstroke"/>
+            <rect x="31" y="22" width="6" height="16" rx="1" stroke="var(--gold)" class="cstroke"/>
+          </svg>
+        </div>
+        <div class="cn">01</div>
+        <h3 class="ct">Gestão Financeira</h3>
+        <p class="cd">Organização financeira com transparência nas contas do condomínio, utilizando relatórios simples e acessíveis para todos.</p>
+      </div>
+
+      <!-- CARD 2: Mediação de Conflitos -->
+      <div class="card rv d1">
+        <div class="ciw">
+          <svg width="48" height="44" viewBox="0 0 48 44" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="10" r="5" stroke="var(--gold)" class="cstroke"/>
+            <circle cx="36" cy="10" r="5" stroke="var(--gold)" class="cstroke"/>
+            <path d="M2 38c0-6 4-10 10-10h4" stroke="var(--gold)" class="cstroke"/>
+            <path d="M46 38c0-6-4-10-10-10h-4" stroke="var(--gold)" class="cstroke"/>
+            <rect x="17" y="24" width="14" height="14" rx="3" stroke="var(--gold)" class="cstroke"/>
+            <circle cx="24" cy="31" r="2.5" stroke="var(--gold)" class="cstroke"/>
+            <line x1="16" y1="31" x2="12" y2="31" stroke="var(--gold)" class="cstroke"/>
+            <line x1="32" y1="31" x2="36" y2="31" stroke="var(--gold)" class="cstroke"/>
+          </svg>
+        </div>
+        <div class="cn">02</div>
+        <h3 class="ct">Mediação de Conflitos</h3>
+        <p class="cd">Apoio na mediação de conflitos com escuta ativa e busca por soluções equilibradas para manter um bom convívio entre os usuários.</p>
+      </div>
+
+      <!-- CARD 3: Manutenção Preventiva -->
+      <div class="card rv d2">
+        <div class="ciw">
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="23" cy="23" r="5" stroke="var(--gold)" class="cstroke"/>
+            <path d="M23 5v5M23 36v5M5 23h5M36 23h5" stroke="var(--gold)" class="cstroke"/>
+            <path d="M10.5 10.5l3.5 3.5M32 32l3.5 3.5M10.5 35.5l3.5-3.5M32 14l3.5-3.5" stroke="var(--gold)" class="cstroke"/>
+            <path d="M17 8l1.5 4M27.5 34l1.5 4M8 27.5l4-1.5M34 18.5l4-1.5" stroke="var(--gold)" class="cstroke" stroke-width="1.6"/>
+            <line x1="27" y1="19" x2="38" y2="8" stroke="var(--gold)" class="cstroke" stroke-width="3"/>
+            <rect x="34" y="4" width="8" height="6" rx="2" transform="rotate(45 34 4)" stroke="var(--gold)" class="cstroke" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <div class="cn">03</div>
+        <h3 class="ct">Manutenção Preventiva</h3>
+        <p class="cd">Acompanhamento das necessidades do condomínio com foco em organização das manutenções e prevenção de problemas futuros.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="dif">
+  <div class="dbg"><img src="assets/predio.png" alt="" onerror="this.style.display='none'"/></div>
+  <div class="dov"></div>
+  <div class="dc">
+    <div class="sl2 rv"><div class="sll"></div><span>Por que me escolher</span></div>
+    <h2 class="st rv d1" style="color:var(--w);margin-top:14px">GESTÃO QUE<br><span class="it">valoriza</span><br>SEU PATRIMÔNIO</h2>
+    <p class="dt rv d2">Cada condomínio tem suas particularidades. Por isso, busco uma gestão próxima, entendendo as necessidades reais e evoluindo continuamente junto com os condôminos.</p>
+    <div class="di rv d3">
+      <div class="ditem"><div class="dd"></div>Avaliação inicial sem compromisso</div>
+      <div class="ditem"><div class="dd"></div>Atendimento presencial ou online</div>
+      <div class="ditem"><div class="dd"></div>Relatórios mensais com total transparência</div>
+      <div class="ditem"><div class="dd"></div>Resposta em até 24 horas úteis</div>
+    </div>
+  </div>
+</div>
+
+<section id="contato" class="contato">
+  <div class="cc">
+    <div class="sh">
+      <div class="sl2 rv"><div class="sll"></div><span>Diagnóstico Gratuito</span><div class="sll"></div></div>
+      <h2 class="st rv d1" style="margin-top:14px">SOLICITAR ORÇAMENTO</h2>
+      <p class="sp rv d2" style="max-width:500px;margin:16px auto 0;text-align:center">Preencha o formulário e retornarei o contato o mais breve possível.</p>
+    </div>
+    <div class="fcard rv d1">
+      <form id="lf" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms: troque pelo access_key gerado no seu e-mail -->
+        <input type="hidden" name="access_key" value="602db7ea-b684-4adc-a94a-b6b43d28884f"/>
+        <input type="hidden" name="subject" value="[Site] Novo contato — Síndica Profissional"/>
+        <input type="hidden" name="from_name" value="Formulário Site PHM"/>
+        <input type="hidden" name="replyto" value="ph.sindicaprofissional@gmail.com"/>
+        <input type="hidden" name="redirect" value="false"/>
+        <input type="checkbox" name="botcheck" style="display:none"/>
+        <div class="fgrid">
+          <div class="fg"><label class="fl" for="nome">Nome Completo</label><input class="fi" id="nome" name="nome" type="text" placeholder="João Silva" required/></div>
+          <div class="fg"><label class="fl" for="email">E-mail</label><input class="fi" id="email" name="email" type="email" placeholder="joao@email.com" required/></div>
+          <div class="fg full"><label class="fl" for="cond">Nome do Condomínio</label><input class="fi" id="cond" name="condominio" type="text" placeholder="Residencial das Flores" required/></div>
+        </div>
+        <button type="submit" class="benv" id="btn-submit">
+          <span id="btn-txt">Solicitar Diagnóstico Gratuito</span>
+          <span id="btn-load" style="display:none">Enviando…</span>
+        </button>
+        <p class="fnote">🔒 Seus dados estão protegidos e não serão compartilhados com terceiros.</p>
+        <div class="fdiv">ou fale direto</div>
+        <a href="https://wa.me/qr/4FZ23S6W37EIN1" target="_blank" rel="noopener" class="wbtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chamar no WhatsApp
+        </a>
+      </form>
+      <div class="fsuc" id="fs">
+        <div class="fsi">✓</div>
+        <div class="fst">Mensagem Recebida!</div>
+        <p class="fsp">Patrícia Helena entrará em contato<br>em até 24 horas úteis. Obrigada!</p>
+      </div>
+      <div class="fsuc" id="fs-err">
+        <div class="fsi" style="color:#e55;">✕</div>
+        <div class="fst" style="color:#e55;">Ops, algo deu errado</div>
+        <p class="fsp">Tente novamente ou envie um e-mail diretamente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fi2">
+    <a href="#" class="logo logo-ft">
+      <div class="logo-bar"></div>
+      <div class="logo-name">Patrícia <span>Helena</span></div>
+      <div class="logo-tagline">Síndica Profissional</div>
+    </a>
+    <div class="fcopy">© 2024 · Todos os direitos reservados</div>
+  </div>
+</footer>
+
+<script>
+  // Hover nos cards: troca cor dos SVGs
+  document.querySelectorAll('.card').forEach(card => {
+    const strokes = card.querySelectorAll('.cstroke');
+    card.addEventListener('mouseenter', () => strokes.forEach(s => s.setAttribute('stroke','white')));
+    card.addEventListener('mouseleave', () => strokes.forEach(s => s.setAttribute('stroke','var(--gold)')));
+  });
+
+  const H = document.getElementById('H');
+  let lastY = 0;
+  window.addEventListener('scroll', () => {
+    const y = scrollY;
+    H.classList.toggle('scrolled', y > 40);
+    if(y > 120){
+      H.classList.toggle('hidden', y > lastY);
+    } else {
+      H.classList.remove('hidden');
+    }
+    lastY = y;
+  });
+
+  const obs = new IntersectionObserver(
+    es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); } }),
+    {threshold:.1}
+  );
+  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+  document.getElementById('lf').addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn  = document.getElementById('btn-submit');
+    const txtEl = document.getElementById('btn-txt');
+    const loadEl = document.getElementById('btn-load');
+
+    // Estado: enviando
+    btn.disabled = true;
+    txtEl.style.display = 'none';
+    loadEl.style.display = 'inline';
+
+    const data = new FormData(e.target);
+
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', { method:'POST', body:data });
+      const json = await res.json();
+
+      if(json.success){
+        document.getElementById('lf').style.display = 'none';
+        document.getElementById('fs').classList.add('show');
+      } else {
+        throw new Error('fail');
+      }
+    } catch(_){
+      document.getElementById('lf').style.display = 'none';
+      document.getElementById('fs-err').classList.add('show');
+    }
+  });
+</script>
+</body>
+</html>
